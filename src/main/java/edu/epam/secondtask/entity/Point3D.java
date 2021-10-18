@@ -1,6 +1,6 @@
 package edu.epam.secondtask.entity;
 
-import java.util.Objects;
+import java.util.StringJoiner;
 
 public class Point3D {
     Double x;
@@ -29,21 +29,28 @@ public class Point3D {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Point3D point3D = (Point3D) o;
-        return x.equals(point3D.x) && y.equals(point3D.y) && z.equals(point3D.z);
+
+        if (x != null ? !x.equals(point3D.x) : point3D.x != null) return false;
+        if (y != null ? !y.equals(point3D.y) : point3D.y != null) return false;
+        return z != null ? z.equals(point3D.z) : point3D.z == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(x, y, z);
+        int result = x != null ? x.hashCode() : 0;
+        result = 31 * result + (y != null ? y.hashCode() : 0);
+        result = 31 * result + (z != null ? z.hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
-        return "Point3D{" +
-                "x=" + x +
-                ", y=" + y +
-                ", z=" + z +
-                '}';
+        return new StringJoiner(", ", Point3D.class.getSimpleName() + "[", "]")
+                .add("x=" + x)
+                .add("y=" + y)
+                .add("z=" + z)
+                .toString();
     }
 }

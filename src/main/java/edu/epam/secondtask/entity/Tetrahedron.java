@@ -1,13 +1,12 @@
 package edu.epam.secondtask.entity;
 
-import edu.epam.secondtask.exception.WrongTetrahedronParametersException;
-
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 public class Tetrahedron {
     Point3D[] vertexes;
-    static Long idGenerationSeed = 0l;
+    static Long idGenerationSeed = 0L;
     Long id;
     String name;
 
@@ -46,10 +45,10 @@ public class Tetrahedron {
 
     @Override
     public String toString() {
-        return "Tetrahedron{" +
-                "vertexes=" + Arrays.toString(vertexes) +
-                ", id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return new StringJoiner(", ", Tetrahedron.class.getSimpleName() + "[", "]")
+                .add("vertexes=" + Arrays.toString(vertexes))
+                .add("id=" + id)
+                .add("name='" + name + "'")
+                .toString();
     }
 }

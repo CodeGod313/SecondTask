@@ -1,7 +1,6 @@
 package edu.epam.secondtask.exception;
 
-public class WrongTetrahedronParametersException extends Exception
-{
+public class WrongTetrahedronParametersException extends Exception {
     public WrongTetrahedronParametersException() {
     }
 

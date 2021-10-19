@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.StringJoiner;
 
 public class Tetrahedron {
+    //TODO: rebase generation of id
     Point3D[] vertexes;
     static Long idGenerationSeed = 0L;
     Long id;

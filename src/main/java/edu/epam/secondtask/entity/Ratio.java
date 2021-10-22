@@ -24,4 +24,8 @@ public class Ratio {
     public void setDenominator(Double denominator) {
         this.denominator = denominator;
     }
+
+    public Double getAsDouble() {
+        return numerator / denominator;
+    }
 }

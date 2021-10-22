@@ -12,8 +12,7 @@ import java.util.List;
 
 public class TetrahedronFactoryImpl implements TetrahedronFactory {
     static Logger logger = LogManager.getLogger(TetrahedronFactoryImpl.class);
-
-    //TODO:add validators
+    //TODO: add logs
 
     @Override
     public Tetrahedron createTetrahedron(Point3D[] vertexes, String name) throws WrongTetrahedronParametersException {

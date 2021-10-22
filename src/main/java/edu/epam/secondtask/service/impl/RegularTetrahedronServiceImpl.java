@@ -1,9 +1,6 @@
 package edu.epam.secondtask.service.impl;
 
-import edu.epam.secondtask.entity.CoordinatePlane;
-import edu.epam.secondtask.entity.Plane;
-import edu.epam.secondtask.entity.Point3D;
-import edu.epam.secondtask.entity.Tetrahedron;
+import edu.epam.secondtask.entity.*;
 import edu.epam.secondtask.exception.WrongPlaneParametersException;
 import edu.epam.secondtask.exception.WrongTetrahedronParametersException;
 import edu.epam.secondtask.factory.PlaneFactory;
@@ -15,7 +12,6 @@ import java.util.List;
 
 public class RegularTetrahedronServiceImpl implements RegularTetrahedronService {
 
-    //TODO: add validators
 
     @Override
     public Double countSurfaceArea(Tetrahedron tetrahedron) {
@@ -39,15 +35,33 @@ public class RegularTetrahedronServiceImpl implements RegularTetrahedronService 
     }
 
     @Override
-    public Double countValuesRatioOfIntersectedByCoordinatePlaneTetrahedron(Tetrahedron tetrahedron, CoordinatePlane coordinatePlane) throws WrongPlaneParametersException, WrongTetrahedronParametersException {
-        //TODO: add realisation
+    public Ratio countValuesRatioOfIntersectedByCoordinatePlaneTetrahedron(Tetrahedron tetrahedron, CoordinatePlane coordinatePlane) throws WrongPlaneParametersException, WrongTetrahedronParametersException {
+        //TODO: change realisation
         PlaneFactory planeFactory = new PlaneFactoryImpl();
         List<Plane> facets = planeFactory.createPlanesOfTetrahedronsFacets(tetrahedron);
         PlaneService planeService = new PlaneServiceImpl();
-        List<Plane> parallelPlaneList = facets.stream().filter(x->planeService.isParallel(x,coordinatePlane)).toList();
-        if(parallelPlaneList.size() != 1){
+        List<Plane> parallelPlaneList = facets.stream().filter(x -> planeService.isParallel(x, coordinatePlane)).toList();
+        if (parallelPlaneList.size() != 1) {
             throw new WrongTetrahedronParametersException("Any tetrahedron face is parallel to coordinate plane");
         }
         Plane parallelPlane = parallelPlaneList.get(0);
+        Point3D[] pointsOfParallelPlane = parallelPlane.getPoints();
+        Point3D vertexOfParallelPlane = null;
+        Point3D[] pointsOfTetrahedron = tetrahedron.getVertexes();
+        for (int i = 0; i < pointsOfTetrahedron.length; i++) {
+            for (int j = 0; j < pointsOfParallelPlane.length; j++) {
+                if (!pointsOfTetrahedron[i].equals(pointsOfParallelPlane[j])) {
+                    vertexOfParallelPlane = pointsOfTetrahedron[i];
+                }
+            }
+        }
+        switch (coordinatePlane) {
+            case XY_PLANE -> {
+                if (vertexOfParallelPlane.getZ() < pointsOfParallelPlane[0].getZ()) {
+                    throw new WrongTetrahedronParametersException("The plane does not intersect the tetrahedron");
+                }
+
+            }
+        }
     }
 }

@@ -13,6 +13,7 @@ import java.util.List;
 
 public class PlaneFactoryImpl implements PlaneFactory {
     static Logger logger = LogManager.getLogger(PlaneFactoryImpl.class);
+    //TODO: add logs
 
     @Override
     public Plane createPlane(Point3D[] points) throws WrongPlaneParametersException {

@@ -3,25 +3,25 @@ package edu.epam.secondtask.entity;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.StringJoiner;
+import java.util.UUID;
 
-public class Tetrahedron {
-    //TODO: rebase generation of id
+public class Tetrahedron implements Observable{
     Point3D[] vertexes;
-    static Long idGenerationSeed = 0L;
-    Long id;
+    UUID id;
     String name;
+
 
     public Tetrahedron(Point3D[] vertexes, String name) {
         this.vertexes = vertexes.clone();
         this.name = name;
-        id = idGenerationSeed++;
+        id = UUID.randomUUID();
     }
 
     public Point3D[] getVertexes() {
         return vertexes.clone();
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -51,5 +51,10 @@ public class Tetrahedron {
                 .add("id=" + id)
                 .add("name='" + name + "'")
                 .toString();
+    }
+
+    @Override
+    public void notifyObserver() {
+
     }
 }

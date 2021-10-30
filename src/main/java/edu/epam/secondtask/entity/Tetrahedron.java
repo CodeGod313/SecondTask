@@ -1,20 +1,27 @@
 package edu.epam.secondtask.entity;
 
+import edu.epam.secondtask.event.TetrahedronEvent;
+import edu.epam.secondtask.observer.impl.TetrahedronObserver;
+
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.StringJoiner;
 import java.util.UUID;
 
-public class Tetrahedron implements Observable{
+public class Tetrahedron implements Observable {
     Point3D[] vertexes;
     UUID id;
     String name;
-
+    TetrahedronObserver tetrahedronObserver = new TetrahedronObserver();
 
     public Tetrahedron(Point3D[] vertexes, String name) {
         this.vertexes = vertexes.clone();
         this.name = name;
         id = UUID.randomUUID();
+    }
+
+    public void setVertexes(Point3D[] vertexes) {
+        this.vertexes = vertexes.clone();
     }
 
     public Point3D[] getVertexes() {
@@ -55,6 +62,7 @@ public class Tetrahedron implements Observable{
 
     @Override
     public void notifyObserver() {
-
+        TetrahedronEvent event = new TetrahedronEvent(this);
+        tetrahedronObserver.parameterChanged(event);
     }
 }

@@ -17,7 +17,7 @@ public class TetrahedronPointSpecification implements TetrahedronSpecification {
     public boolean specify(Tetrahedron tetrahedron) {
         Point3D[] points = tetrahedron.getVertexes();
         return Arrays.stream(points)
-                .filter(x->x.equals(point))
+                .filter(x -> x.equals(point))
                 .findAny()
                 .isPresent();
     }

@@ -10,7 +10,7 @@ import java.util.List;
 public class StringParserImpl implements StringParser {
     static Logger logger = LogManager.getLogger(StringParserImpl.class);
 
-    public static final String REGEX_DELIMITER = "\\s*,\\s*";
+    public static final String REGEX_DELIMITER = "\\s+";
 
     @Override
     public List<String> separateLine(String line) {

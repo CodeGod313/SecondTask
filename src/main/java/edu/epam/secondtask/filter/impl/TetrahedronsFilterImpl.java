@@ -9,7 +9,6 @@ import java.util.List;
 public class TetrahedronsFilterImpl implements TetrahedronFilter {
     static Logger logger = LogManager.getLogger(TetrahedronsFilterImpl.class);
 
-    //TODO:parse to more constants
     public static final String REGEX_TETRAHEDRON = "\\s*[a-zA-Z]+\\s+\\d+\\.?\\d*\\s+\\d+\\.?\\d*\\s+\\d+\\.?\\d*\\s+\\d+\\.?\\d*\\s+\\d+\\.?\\d*\\s+\\d+\\.?\\d*\\s+\\d+\\.?\\d*\\s+\\d+\\.?\\d*\\s+\\d+\\.?\\d*\\s+\\d+\\.?\\d*\\s+\\d+\\.?\\d*\\s+\\d+\\.?\\d*\\s*";
 
     @Override

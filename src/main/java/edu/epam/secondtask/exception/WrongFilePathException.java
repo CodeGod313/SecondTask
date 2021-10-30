@@ -1,6 +1,6 @@
 package edu.epam.secondtask.exception;
 
-public class WrongFilePathException extends Exception{
+public class WrongFilePathException extends Exception {
     public WrongFilePathException() {
     }
 

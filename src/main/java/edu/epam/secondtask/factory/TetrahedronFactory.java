@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface TetrahedronFactory {
     public Tetrahedron createTetrahedron(Point3D[] vertexes, String name) throws WrongTetrahedronParametersException;
+
     public Tetrahedron createTetrahedronFromStrings(List<String> strings) throws WrongTetrahedronParametersException;
 }

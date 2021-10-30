@@ -14,8 +14,9 @@ public class TetrahedronEvent extends EventObject {
     public TetrahedronEvent(Object source) {
         super(source);
     }
+
     @Override
-    public Tetrahedron getSource(){
+    public Tetrahedron getSource() {
         return (Tetrahedron) super.getSource();
     }
 }

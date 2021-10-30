@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 
 public class RatioServiceImpl implements RatioService {
     static Logger logger = LogManager.getLogger(RatioServiceImpl.class);
+
     @Override
     public void reduce(Ratio ratio) {
         Double numerator = ratio.getNumerator();

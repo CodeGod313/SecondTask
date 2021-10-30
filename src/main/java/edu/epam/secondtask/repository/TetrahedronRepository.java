@@ -1,5 +1,7 @@
 package edu.epam.secondtask.repository;
 
+import edu.epam.secondtask.comparator.TetrahedronIdComparator;
+import edu.epam.secondtask.comparator.TetrahedronNameComparator;
 import edu.epam.secondtask.entity.Tetrahedron;
 import edu.epam.secondtask.repository.specification.TetrahedronSpecification;
 import org.jetbrains.annotations.NotNull;
@@ -48,5 +50,16 @@ public class TetrahedronRepository {
                 .filter(x->specification.specify(x))
                 .toList();
     }
-
+    List<Tetrahedron> sortById(){
+        return tetrahedrons
+                .stream()
+                .sorted(new TetrahedronIdComparator())
+                .toList();
+    }
+    List<Tetrahedron> sortByName(){
+        return tetrahedrons
+                .stream()
+                .sorted(new TetrahedronNameComparator())
+                .toList();
+    }
 }

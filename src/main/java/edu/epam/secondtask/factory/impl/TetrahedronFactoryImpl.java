@@ -12,11 +12,11 @@ import java.util.List;
 
 public class TetrahedronFactoryImpl implements TetrahedronFactory {
     static Logger logger = LogManager.getLogger(TetrahedronFactoryImpl.class);
-    //TODO: add logs
 
     @Override
     public Tetrahedron createTetrahedron(Point3D[] vertexes, String name) throws WrongTetrahedronParametersException {
         if (vertexes.length != 4) {
+            logger.error("Wrong quantity of vertexes");
             throw new WrongTetrahedronParametersException("Wrong quantity of vertexes");
         }
         if (name == null || name == "") {
@@ -28,7 +28,8 @@ public class TetrahedronFactoryImpl implements TetrahedronFactory {
     @Override
     public Tetrahedron createTetrahedronFromStrings(List<String> strings) throws WrongTetrahedronParametersException {
         if (strings.size() != 13) {
-            throw new WrongTetrahedronParametersException("Not enough params");
+            logger.error("Not enough params to create tetrahedron");
+            throw new WrongTetrahedronParametersException("Not enough params to create tetrahedron");
         }
         String name = strings.get(0);
         Point3DFactory point3DFactory = new Point3DFactoryImpl();
